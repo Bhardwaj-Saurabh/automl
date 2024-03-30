@@ -9,11 +9,12 @@ from config import MODEL_DIR, RANDOM_SEED
 def main():
     st.title('Welcome to Zizo AutoML')
 
-    # Step 1: Ask user to upload the data
-    uploaded_file = st.file_uploader("Choose a file")
-    if uploaded_file is not None:
+    # Step 1: Ask for the data folder path
+    data_folder_path = st.text_input("Enter the data folder path")
+    
+    if data_folder_path:
         # Read the uploaded file
-        df = pd.read_csv(uploaded_file)
+        df = pd.read_csv(os.path.join(data_folder_path))
 
         # Display the first five rows of the dataframe
         st.write("First five rows of the dataset:")
